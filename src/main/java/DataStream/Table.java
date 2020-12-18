@@ -8,7 +8,7 @@ import org.apache.flink.types.Row;
 
 import static org.apache.flink.table.api.Expressions.$;
 
-public class table {
+public class Table {
     public static void main(String[] args) throws Exception {
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
         var tEnv = StreamTableEnvironment.create(env);

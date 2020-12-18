@@ -173,7 +173,7 @@ under the License.
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>DataStream.kafka</mainClass>
+                                    <mainClass>DataStream.Kafka</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

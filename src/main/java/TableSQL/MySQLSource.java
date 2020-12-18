@@ -9,20 +9,6 @@ public class MySQLSource {
         EnvironmentSettings settings = EnvironmentSettings.newInstance().build();
         TableEnvironment tEnv = TableEnvironment.create(settings);
 
-//        tEnv.executeSql("CREATE TABLE test_kafka (\n" +
-//                "    account_id  BIGINT,\n" +
-//                "    amount      BIGINT\n" +
-//                ") WITH (\n" +
-////                "    'connector' = 'kafka',\n" +
-////                "    'topic'     = 'test_kafka'\n" +
-////                "    'properties.bootstrap.servers' = '192.168.200.202:9092',\n" +
-////                "    'format'    = 'csv',\n" +
-////                "    'sink.parallelism'    = '2',\n" +
-////                "    'scan.startup.mode' = 'latest-offset'\n" +
-//
-////                "    'connector' = 'print'\n" +
-//                ")");
-
         tEnv.executeSql("CREATE TABLE person (\n" +
                 "    name           VARCHAR,\n" +
                 "    amount         BIGINT\n" +
@@ -52,14 +38,5 @@ public class MySQLSource {
                 .groupBy($("name"))
                 .select($("name"),$("amount").sum().as("total"))
                 .executeInsert("spend_report");
-    }
-
-    public static Table report(Table rows) {
-//        return rows.window(Tumble.over(lit(1).hour()).on($("transaction_time")).as("log_ts"))
-        return rows
-                .groupBy($("account_id"))
-                .select(
-                        $("account_id"),
-                        $("amount").sum().as("amount"));
     }
 }

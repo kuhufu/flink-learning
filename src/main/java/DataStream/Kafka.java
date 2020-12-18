@@ -15,7 +15,7 @@ import java.util.Properties;
 
 import static org.apache.flink.table.api.Expressions.$;
 
-public class kafka {
+public class Kafka {
     public static void main(String[] args) throws Exception {
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
         var tEnv = StreamTableEnvironment.create(env);
