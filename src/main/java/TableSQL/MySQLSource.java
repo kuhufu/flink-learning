@@ -21,6 +21,7 @@ public class MySQLSource {
                 "   'password'   = 'onekick123456'\n" +
                 ")");
 
+        //sink的表必须要有主键
         tEnv.executeSql("CREATE TABLE spend_report (\n" +
                 "    name       VARCHAR,\n" +
                 "    total      BIGINT,\n" +
@@ -36,7 +37,7 @@ public class MySQLSource {
 
         tEnv.from("person")
                 .groupBy($("name"))
-                .select($("name"),$("amount").sum().as("total"))
+                .select($("name"), $("amount").sum().as("total"))
                 .executeInsert("spend_report");
     }
 }
